@@ -23,7 +23,7 @@ const actions = {
     })
   },
   addVideo: ({dispatch}, data) => {
-    videos.add(data).then(res => {
+    return videos.add(data).then(res => {
       dispatch('loadVideos')
     })
   }

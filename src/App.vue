@@ -1,5 +1,6 @@
 <template>
   <div id="app" class="container-fluid w-75 my-5 px-5 pb-2 rounded shadow">
+    <notifications group="main" />
     <Nav></Nav>
     <section class="heading">
       <router-link to="/"><h1 class="mb-4 pb-2 text-center">Videolibrary</h1></router-link>

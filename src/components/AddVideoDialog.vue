@@ -13,7 +13,7 @@
           <form>
             <div class="form-group">
               <label for="link">Youtube Link</label>
-              <input v-model="video.link" type="email" class="form-control" id="link" aria-describedby="emailHelp" placeholder="https://www.youtube.com/watch?v=md2umXaV5tw">
+              <input v-model="video.link" type="email" class="form-control" id="link" aria-describedby="emailHelp" placeholder="Enter Youtube video url">
             </div>
             <div class="form-group">
               <label for="category">Category</label>
@@ -55,12 +55,16 @@
 </template>
 
 <script lang="js">
+import $ from 'jquery'
 import Multiselect from 'vue-multiselect'
 export default {
   name: 'src-components-add-video-dialog',
   props: [],
   mounted () {
-
+    $('#addVideoDialog').on('hidden.bs.modal', (e) => {
+      this.resetForm()
+    })
+    this.videoDefaultValues = { ...this.video }
   },
   data () {
     return {
@@ -68,12 +72,31 @@ export default {
         link: null,
         category: null,
         tags: []
-      }
+      },
+      videoDefaultValues: {}
     }
   },
   methods: {
     addVideo () {
-      this.$store.dispatch('addVideo', this.video)
+      this.$store.dispatch('addVideo', this.video).then(res => {
+        $('#addVideoDialog').modal('hide')
+        this.$notify({
+          group: 'main',
+          title: 'Success',
+          type: 'success',
+          text: 'New video added to library'
+        })
+      }).catch(err => {
+        this.$notify({
+          group: 'main',
+          title: 'Error',
+          type: 'error',
+          text: err.response.data.message
+        })
+      })
+    },
+    resetForm () {
+      this.video = { ...this.videoDefaultValues }
     }
   },
   computed: {},

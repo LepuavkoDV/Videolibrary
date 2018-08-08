@@ -7,10 +7,11 @@ import { Tag } from './Tag'
 const Schema = mongoose.Schema
 
 const VideoSchema = new Schema({
+  YTId: { type: String, required: true },
   title: { type: String, required: true },
   link: { type: String, required: true },
   duration: { type: String, required: true },
-  category: { type: Schema.Types.ObjectId, ref: 'Category', childPath: 'videos' },
+  category: { type: Schema.Types.ObjectId, ref: 'Category', childPath: 'videos', required: true },
   tags: [{ type: Schema.Types.ObjectId, ref: 'Tag', childPath: 'videos' }],
   createdAt: { type: Date }
 })

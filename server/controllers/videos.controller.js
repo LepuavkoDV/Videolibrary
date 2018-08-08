@@ -16,6 +16,7 @@ const videos = {
   async add (data) {
     try {
       const video = new Video({
+        YTId: data.YTId,
         title: data.title,
         duration: data.duration,
         link: data.link,

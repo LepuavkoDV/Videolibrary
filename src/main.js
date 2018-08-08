@@ -15,6 +15,9 @@ library.add(faTags)
 library.add(faHome)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
+import Notifications from 'vue-notification'
+Vue.use(Notifications)
+
 Vue.config.productionTip = false
 
 new Vue({

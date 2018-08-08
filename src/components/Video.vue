@@ -9,7 +9,7 @@
     </div>
     <div class="video-box d-flex flex-column border rounded shadow-sm p-1 mb-4">
       <div class="embed-responsive rounded embed-responsive-16by9">
-        <iframe class="embed-responsive-item" width="auto" height="150" :src="url"></iframe>
+        <iframe class="embed-responsive-item" width="auto" height="150" :src="url" allowfullscreen></iframe>
       </div>
       <div class="video-item__info">
         <div class="video-description d-flex justify-content-center py-1 px-5">
@@ -30,7 +30,6 @@
 <script lang="js">
 import moment from 'moment'
 import _ from 'lodash'
-import videos from '../modules/services/videos.service'
 export default {
   name: 'src-components-video',
   props: ['video'],
@@ -52,11 +51,12 @@ export default {
     },
     duration () {
       const seconds = this._props.video.duration
-      const duration = moment.utc(seconds * 1000).format('mm:ss')
+      const format = seconds > 3600 ? 'HH:mm:ss' : 'mm:ss'
+      const duration = moment.utc(seconds * 1000).format(format)
       return duration
     },
     url () {
-      return 'https://www.youtube.com/embed/' + videos.getYoutubeVideoId(this._props.video.link) + '?rel=0'
+      return 'https://www.youtube.com/embed/' + this._props.video.YTId + '?rel=0'
     },
     category () {
       return this._props.video.category.title

@@ -15,31 +15,29 @@ const videos = {
   },
 
   async add (data) {
-    try {
-      let tags = []
-      _.forEach(data.tags, (tag) => {
-        tags.push(tag._id)
-      })
+    let tags = []
+    _.forEach(data.tags, (tag) => {
+      tags.push(tag._id)
+    })
 
-      const YTVideo = await this.YoutubeVideoInfo(this.getYoutubeVideoId(data.link))
-      const duration = moment.duration(YTVideo.data.items[0].contentDetails.duration).asSeconds()
-      let video = {
-        title: YTVideo.data.items[0].snippet.title,
-        duration: duration,
-        link: data.link,
-        category: data.category._id,
-        tags: tags
-      }
-      const result = await axios.post(apiUrl + '/videos', video)
-      return result
-    } catch (error) {
-      return error
+    const YTVideo = await this.YoutubeVideoInfo(this.getYoutubeVideoId(data.link))
+    const duration = moment.duration(YTVideo.data.items[0].contentDetails.duration).asSeconds()
+    let video = {
+      YTId: this.getYoutubeVideoId(data.link),
+      title: YTVideo.data.items[0].snippet.title,
+      duration: duration,
+      link: data.link,
+      category: data.category._id,
+      tags: tags
     }
+    const res = await axios.post(apiUrl + '/videos', video)
+    return res
   },
 
   getYoutubeVideoId (url) {
     /* eslint-disable no-useless-escape */
     var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/
+    /* eslint-enable no-useless-escape */
     var match = url.match(regExp)
 
     if (match && match[2].length === 11) {
