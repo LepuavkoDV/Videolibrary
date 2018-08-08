@@ -89,11 +89,11 @@ export default {
     .video-description {
       border-bottom: 1px solid $gray-200;
       a {
-        color: $danger !important;
+        color: $danger;
         font-weight: 300;
-        color: $primary;
         font-size: .9rem;
         &:hover {
+          color: $gray-700;
           text-decoration: none;
         }
       }
@@ -101,13 +101,13 @@ export default {
     .video-tags {
       .tag {
         font-family: $font-family-jura;
-        color: $gray-600;
+        color: $success;
         font-size: .8rem;
         font-weight: 400;
         margin-left: .25em;
         &:hover {
           text-decoration: none;
-          color: $danger;
+          color: $gray-700;
         }
       }
     }

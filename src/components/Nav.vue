@@ -25,6 +25,7 @@
       </li>
     </ul>
     <AddVideoDialog></AddVideoDialog>
+    <AddCategoryDialog></AddCategoryDialog>
   </section>
 
 </template>
@@ -33,6 +34,7 @@
 import $ from 'jquery'
 import router from '../modules/router'
 import AddVideoDialog from './AddVideoDialog'
+import AddCategoryDialog from './AddCategoryDialog'
 export default {
   name: 'src-components-nav',
   props: [],
@@ -61,7 +63,8 @@ export default {
   },
   computed: {},
   components: {
-    AddVideoDialog
+    AddVideoDialog,
+    AddCategoryDialog
   },
   watch: {
     '$route' (to, from) {

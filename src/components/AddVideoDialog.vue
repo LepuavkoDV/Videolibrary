@@ -44,9 +44,21 @@
             </div>
           </form>
         </div>
-        <div class="modal-footer">
-          <button @click.prevent="addVideo()" type="button" class="btn btn-danger btn-sm">Add</button>
-          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+        <div class="modal-footer d-flex flex-row justify-content-between">
+          <div class="float-left">
+            <button
+              @click.prevent="showAddCategoryDialog()"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Add new category or tag"
+              class="btn btn-sm btn-outline-success">
+              <font-awesome-icon icon="cogs"/>
+            </button>
+          </div>
+          <div class="float-right">
+            <button @click.prevent="addVideo()" type="button" class="btn btn-danger btn-sm">Add</button>
+            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+          </div>
         </div>
       </div>
     </div>
@@ -73,7 +85,7 @@ export default {
         category: null,
         tags: []
       },
-      videoDefaultValues: {}
+      videoDefaultValues: null
     }
   },
   methods: {
@@ -97,6 +109,14 @@ export default {
     },
     resetForm () {
       this.video = { ...this.videoDefaultValues }
+    },
+    showAddTagDialog () {
+      $('#addVideoDialog').modal('hide')
+      $('#addTagModal').modal('show')
+    },
+    showAddCategoryDialog () {
+      $('#addVideoDialog').modal('hide')
+      $('#addCategoryModal').modal('show')
     }
   },
   computed: {},
