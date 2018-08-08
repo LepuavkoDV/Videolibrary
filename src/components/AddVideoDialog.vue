@@ -13,12 +13,12 @@
           <form>
             <div class="form-group">
               <label for="link">Youtube Link</label>
-              <input type="email" class="form-control" id="link" aria-describedby="emailHelp" placeholder="https://www.youtube.com/watch?v=md2umXaV5tw">
+              <input v-model="video.link" type="email" class="form-control" id="link" aria-describedby="emailHelp" placeholder="https://www.youtube.com/watch?v=md2umXaV5tw">
             </div>
             <div class="form-group">
               <label for="category">Category</label>
               <multiselect
-                v-model="selectedCategory"
+                v-model="video.category"
                 :options="categories"
                 :searchable="true"
                 :close-on-select="true"
@@ -29,7 +29,7 @@
             <div class="form-group">
               <label for="tags">Tags</label>
               <multiselect
-                v-model="selectedTags"
+                v-model="video.tags"
                 :options="tags"
                 :searchable="true"
                 :close-on-select="true"
@@ -41,7 +41,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger btn-sm">Add</button>
+          <button @click.prevent="addVideo()" type="button" class="btn btn-danger btn-sm">Add</button>
           <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
         </div>
       </div>
@@ -60,13 +60,20 @@ export default {
   },
   data () {
     return {
-      selectedCategory: '',
+      video: {
+        link: '',
+        category: '',
+        tags: []
+      },
       categories: ['Category1', 'Category2', 'Category3'],
-      selectedTags: [],
       tags: ['Tag1', 'Tag2']
     }
   },
-  methods: {},
+  methods: {
+    addVideo () {
+      console.log(this.video)
+    }
+  },
   computed: {},
   components: {
     Multiselect

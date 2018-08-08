@@ -7,6 +7,9 @@ import cors from 'cors'
 import bodyParer from 'body-parser'
 import Debug from 'debug'
 import morgan from 'morgan'
+import listEndpoints from 'express-list-endpoints'
+
+import api from '../routes/api/v1'
 
 import Database from './database'
 
@@ -24,6 +27,8 @@ class Server {
     this.app.use(history({}))
     this.app.use(serveStatic(path.join(__dirname, '../..', 'dist')))
 
+    this.app.use('/api/v1', api)
+
     this.database = new Database()
   }
 
@@ -35,6 +40,10 @@ class Server {
     })
 
     this.app.listen(this.port, () => this.debug('WebServer listening on port:', this.port))
+  }
+
+  showApiEndpoints () {
+    this.debug(listEndpoints(this.app))
   }
 }
 
