@@ -11,6 +11,11 @@
 <script lang="js">
 import Nav from './components/Nav'
 export default {
+  beforeMount () {
+    this.$store.dispatch('loadVideos')
+    this.$store.dispatch('loadCategories')
+    this.$store.dispatch('loadTags')
+  },
   components: {
     Nav
   }

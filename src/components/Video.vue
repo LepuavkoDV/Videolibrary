@@ -2,28 +2,24 @@
 
   <div class="video-item">
     <div class="video-title d-flex justify-content-between">
-      <h5 class="video-title__title">Video name</h5>
+      <h5 class="video-title__title">{{videoName}}</h5>
       <div>
-        <span class="badge badge-danger">20:22</span>
+        <span class="badge badge-danger">{{duration}}</span>
       </div>
     </div>
     <div class="video-box d-flex flex-column border rounded shadow-sm p-1 mb-4">
       <div class="embed-responsive rounded embed-responsive-16by9">
-        <iframe class="embed-responsive-item" width="auto" height="150" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"></iframe>
+        <iframe class="embed-responsive-item" width="auto" height="150" :src="url"></iframe>
       </div>
       <div class="video-item__info">
         <div class="video-description d-flex justify-content-center py-1 px-5">
           <div>
-            <a href="#">Category</a>,
-            <a href="#">Author</a>
+            <a href="#">{{category}}</a>
+            <!-- <a href="#">Author</a> -->
           </div>
         </div>
         <div class="video-tags d-flex justify-content-center">
-          <a class="tag" href="#">#tag</a>
-          <a class="tag" href="#">#tag</a>
-          <a class="tag" href="#">#tag</a>
-          <a class="tag" href="#">#tag</a>
-          <a class="tag" href="#">#tag</a>
+          <a v-for="(tag, index) in _props.video.tags" :key="index" class="tag" href="#">#{{tag.title}}</a>
         </div>
       </div>
     </div>
@@ -32,9 +28,12 @@
 </template>
 
 <script lang="js">
+import moment from 'moment'
+import _ from 'lodash'
+import videos from '../modules/services/videos.service'
 export default {
   name: 'src-components-video',
-  props: [],
+  props: ['video'],
   mounted () {
 
   },
@@ -43,11 +42,25 @@ export default {
 
     }
   },
-  methods: {
-
-  },
+  methods: {},
   computed: {
-
+    videoName () {
+      return _.truncate(this._props.video.title, {
+        'length': 20,
+        'omission': '...'
+      })
+    },
+    duration () {
+      const seconds = this._props.video.duration
+      const duration = moment.utc(seconds * 1000).format('mm:ss')
+      return duration
+    },
+    url () {
+      return 'https://www.youtube.com/embed/' + videos.getYoutubeVideoId(this._props.video.link) + '?rel=0'
+    },
+    category () {
+      return this._props.video.category.title
+    }
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="videos-container d-flex flex-row flex-wrap justify-content-around align-items-stretch">
-      <Video v-for="(item, index) in videos" :key="index"></Video>
+      <Video v-for="(item, index) in $store.getters.getVideosList()" :key="index" :video="item"></Video>
     </div>
   </section>
 </template>
@@ -14,9 +14,7 @@ export default {
     Video
   },
   data () {
-    return {
-      videos: [1]
-    }
+    return {}
   }
 }
 </script>

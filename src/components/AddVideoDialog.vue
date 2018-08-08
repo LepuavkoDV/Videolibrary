@@ -19,10 +19,12 @@
               <label for="category">Category</label>
               <multiselect
                 v-model="video.category"
-                :options="categories"
+                :options="$store.getters.getCategoriesList()"
                 :searchable="true"
                 :close-on-select="true"
                 :show-labels="true"
+                track-by="_id"
+                label="title"
                 placeholder="Select Category">
               </multiselect>
             </div>
@@ -30,11 +32,13 @@
               <label for="tags">Tags</label>
               <multiselect
                 v-model="video.tags"
-                :options="tags"
+                :options="$store.getters.getTagsList()"
                 :searchable="true"
                 :close-on-select="true"
                 :show-labels="true"
                 :multiple="true"
+                track-by="_id"
+                label="title"
                 placeholder="Select Tags">
               </multiselect>
             </div>
@@ -61,17 +65,15 @@ export default {
   data () {
     return {
       video: {
-        link: '',
-        category: '',
+        link: null,
+        category: null,
         tags: []
-      },
-      categories: ['Category1', 'Category2', 'Category3'],
-      tags: ['Tag1', 'Tag2']
+      }
     }
   },
   methods: {
     addVideo () {
-      console.log(this.video)
+      this.$store.dispatch('addVideo', this.video)
     }
   },
   computed: {},
