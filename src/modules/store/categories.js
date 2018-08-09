@@ -16,10 +16,19 @@ const getters = {
       return {
         _id: item._id,
         title: item.title,
+        videos: item.videos,
         createdAt: formatDate(item.createdAt)
       }
     })
     return list
+  },
+  getCategoryByName: (state) => (name) => {
+    let category = _.find(state.categories, (c) => {
+      return _.kebabCase(c.title) === name
+    })
+    if (category !== undefined) {
+      return category
+    }
   }
 }
 const actions = {

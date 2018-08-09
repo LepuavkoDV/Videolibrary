@@ -14,12 +14,18 @@
       <div class="video-item__info">
         <div class="video-description d-flex justify-content-center py-1 px-5">
           <div>
-            <a href="#">{{category}}</a>
+            <router-link :to="generateLink(category, 'categories')">{{category}}</router-link>
             <!-- <a href="#">Author</a> -->
           </div>
         </div>
         <div class="video-tags d-flex justify-content-center">
-          <a v-for="(tag, index) in _props.video.tags" :key="index" class="tag" href="#">#{{tag.title}}</a>
+          <router-link
+            v-for="(tag, index) in _props.video.tags"
+            :key="index"
+            class="tag"
+            :to="generateLink(tag.title, 'tags')">
+            {{tag.title}}
+          </router-link>
           <a
             @click.prevent="showAddTagToVideoDialog(_props.video._id)"
             href="#"
@@ -52,6 +58,9 @@ export default {
       this.$store.dispatch('setCurrentVideoId', videoId)
       this.$store.dispatch('setCurrentTags', video.tags)
       $('#assignTagToVideoDialog').modal('show')
+    },
+    generateLink (name, mode) {
+      return '/' + mode + '/' + _.kebabCase(name)
     }
   },
   computed: {

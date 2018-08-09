@@ -41,7 +41,7 @@ export default {
   name: 'src-components-nav',
   props: [],
   created () {
-    this.currentRoute = router.currentRoute.name
+    this.currentRoute = router.currentRoute.path
   },
   mounted () {
     $('[data-toggle="tooltip"]').tooltip({
@@ -53,8 +53,8 @@ export default {
       currentRoute: null,
       links: [
         { to: '/', icon: 'home', tooltip: 'Home' },
-        { to: 'categories', icon: 'folder-open', tooltip: 'Categories' },
-        { to: 'tags', icon: 'tags', tooltip: 'Tags' }
+        { to: '/categories', icon: 'folder-open', tooltip: 'Categories' },
+        { to: '/tags', icon: 'tags', tooltip: 'Tags' }
       ]
     }
   },
@@ -71,7 +71,7 @@ export default {
   },
   watch: {
     '$route' (to, from) {
-      this.currentRoute = to.name
+      this.currentRoute = to.path
     }
   }
 }

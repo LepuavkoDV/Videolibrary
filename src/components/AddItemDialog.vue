@@ -67,7 +67,7 @@ export default {
     addNewItem () {
       const action = this.item.type === 'Category' ? 'addCategory' : 'addTag'
       this.$store.dispatch(action, this.item).then(res => {
-        $('#addItemDialog').modal('hide')
+        this.resetForm()
         this.$notify({
           group: 'main',
           title: 'Success',

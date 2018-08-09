@@ -23,6 +23,7 @@ const getters = {
       return {
         _id: item._id,
         title: item.title,
+        videos: item.videos,
         createdAt: formatDate(item.createdAt)
       }
     })

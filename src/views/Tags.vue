@@ -1,34 +1,28 @@
 <template lang="html">
 
   <section class="src-views-tags">
-    <h1>src-views-tags Component</h1>
+    <CategoriesList :items="$store.getters.getTagsList()" :mode="mode"></CategoriesList>
   </section>
 
 </template>
 
 <script lang="js">
+import CategoriesList from '../components/CategoriesList'
 export default {
   name: 'src-views-tags',
   props: [],
-  mounted () {
-
-  },
+  mounted () {},
   data () {
     return {
-
+      mode: 'tags'
     }
   },
-  methods: {
-
-  },
-  computed: {
-
+  methods: {},
+  computed: {},
+  components: {
+    CategoriesList
   }
 }
 </script>
 
-<style scoped lang="scss">
-  .src-views-tags {
-
-  }
-</style>
+<style scoped lang="scss"></style>

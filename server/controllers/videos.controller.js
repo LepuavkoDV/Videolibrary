@@ -57,7 +57,7 @@ const videos = {
           result.status = 500
         }
 
-        // after video undated - updating all involved tags with new relations
+        // after video updated - updating all involved tags with new relations
         Tags.updateRelations(tagsToUpdate)
 
         result.data = {}
