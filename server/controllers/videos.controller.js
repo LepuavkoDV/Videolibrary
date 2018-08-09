@@ -1,6 +1,7 @@
 import result from '../system/result'
 import { Video } from '../models/Video'
 import Tags from './tags.controller'
+import _ from 'lodash'
 
 const videos = {
   async list () {
@@ -37,6 +38,13 @@ const videos = {
 
   async updateTags (id, data) {
     try {
+      // some tags may be removed or added
+      // so make sure all tags will be updated
+      const video = await Video.findById(id)
+      const oldTags = video.tags
+      let tagsToUpdate = _.uniq(_.concat(oldTags, data.tags))
+
+      // update video with new tags
       Video.findByIdAndUpdate(id, {
         $set: {
           tags: data.tags
@@ -49,7 +57,8 @@ const videos = {
           result.status = 500
         }
 
-        Tags.updateRelations()
+        // after video undated - updating all involved tags with new relations
+        Tags.updateRelations(tagsToUpdate)
 
         result.data = {}
         result.status = 200
