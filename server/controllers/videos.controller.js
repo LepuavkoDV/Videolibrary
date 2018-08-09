@@ -1,5 +1,6 @@
 import result from '../system/result'
 import { Video } from '../models/Video'
+import Tags from './tags.controller'
 
 const videos = {
   async list () {
@@ -27,6 +28,32 @@ const videos = {
 
       result.data = await video.save()
       result.status = 201
+    } catch (error) {
+      result.data = error
+      result.status = 500
+    }
+    return result
+  },
+
+  async updateTags (id, data) {
+    try {
+      Video.findByIdAndUpdate(id, {
+        $set: {
+          tags: data.tags
+        }
+      }, {
+        new: true
+      }, (err, video) => {
+        if (err) {
+          result.data = err
+          result.status = 500
+        }
+
+        Tags.updateRelations()
+
+        result.data = {}
+        result.status = 200
+      })
     } catch (error) {
       result.data = error
       result.status = 500

@@ -20,6 +20,14 @@
         </div>
         <div class="video-tags d-flex justify-content-center">
           <a v-for="(tag, index) in _props.video.tags" :key="index" class="tag" href="#">#{{tag.title}}</a>
+          <a
+            @click.prevent="showAddTagToVideoDialog(_props.video._id)"
+            href="#"
+            class="tag"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="Add tag"><font-awesome-icon icon="plus"/>
+          </a>
         </div>
       </div>
     </div>
@@ -28,20 +36,24 @@
 </template>
 
 <script lang="js">
+import $ from 'jquery'
 import moment from 'moment'
 import _ from 'lodash'
 export default {
   name: 'src-components-video',
   props: ['video'],
-  mounted () {
-
-  },
+  mounted () {},
   data () {
-    return {
-
+    return {}
+  },
+  methods: {
+    showAddTagToVideoDialog (videoId) {
+      const video = this.$store.getters.getVideoById(videoId)
+      this.$store.dispatch('setCurrentVideoId', videoId)
+      this.$store.dispatch('setCurrentTags', video.tags)
+      $('#assignTagToVideoDialog').modal('show')
     }
   },
-  methods: {},
   computed: {
     videoName () {
       return _.truncate(this._props.video.title, {

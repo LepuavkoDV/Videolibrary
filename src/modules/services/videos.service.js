@@ -34,6 +34,15 @@ const videos = {
     return res
   },
 
+  async updateTags (data) {
+    let tags = []
+    _.forEach(data.tags, (tag) => {
+      tags.push(tag._id)
+    })
+    const res = axios.post(apiUrl + '/videos/' + data._id + '/tags', { tags: tags })
+    return res
+  },
+
   getYoutubeVideoId (url) {
     /* eslint-disable no-useless-escape */
     var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/

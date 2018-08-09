@@ -1,10 +1,10 @@
 <template lang="html">
 
-  <div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="addItemModalLabel" aria-hidden="true">
+  <div class="modal fade" id="addItemDialog" tabindex="-1" role="dialog" aria-labelledby="addItemDialogLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 class="modal-title" id="addItemModalLabel">Add new category or tag</h3>
+          <h3 class="modal-title" id="addItemDialogLabel">Add new category or tag</h3>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -45,7 +45,7 @@ export default {
   name: 'src-components-add-item-dialog',
   props: [],
   mounted () {
-    $('#addItemModal').on('hide.bs.modal', (e) => {
+    $('#addItemDialog').on('hide.bs.modal', (e) => {
       $('#addVideoDialog').modal('show')
       this.resetForm()
     })
@@ -67,7 +67,7 @@ export default {
     addNewItem () {
       const action = this.item.type === 'Category' ? 'addCategory' : 'addTag'
       this.$store.dispatch(action, this.item).then(res => {
-        $('#addItemModal').modal('hide')
+        $('#addItemDialog').modal('hide')
         this.$notify({
           group: 'main',
           title: 'Success',
@@ -91,9 +91,4 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-@import "../assets/scss/_variables.scss";
-.modal-title {
-  font-family: $font-family-lobster;
-}
-</style>
+<style scoped lang="scss"></style>

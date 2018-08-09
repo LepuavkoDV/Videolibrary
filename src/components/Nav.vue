@@ -26,6 +26,7 @@
     </ul>
     <AddVideoDialog></AddVideoDialog>
     <AddItemDialog></AddItemDialog>
+    <AssignTagToVideoDialog></AssignTagToVideoDialog>
   </section>
 
 </template>
@@ -35,6 +36,7 @@ import $ from 'jquery'
 import router from '../modules/router'
 import AddVideoDialog from './AddVideoDialog'
 import AddItemDialog from './AddItemDialog'
+import AssignTagToVideoDialog from './AssignTagToVideoDialog'
 export default {
   name: 'src-components-nav',
   props: [],
@@ -64,7 +66,8 @@ export default {
   computed: {},
   components: {
     AddVideoDialog,
-    AddItemDialog
+    AddItemDialog,
+    AssignTagToVideoDialog
   },
   watch: {
     '$route' (to, from) {

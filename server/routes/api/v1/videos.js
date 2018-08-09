@@ -15,4 +15,10 @@ api.post('/', (req, res) => {
   })
 })
 
+api.post('/:id/tags', (req, res) => {
+  Videos.updateTags(req.params.id, req.body).then(result => {
+    res.status(result.status).send(result.data)
+  })
+})
+
 export default api

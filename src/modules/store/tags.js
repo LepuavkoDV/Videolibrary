@@ -3,11 +3,18 @@ import _ from 'lodash'
 import formatDate from '../utils/formatDate'
 
 const state = {
-  tags: []
+  tags: [],
+  currentTags: []
 }
 const mutations = {
   LOAD_TAGS (state, data) {
     state.tags = data
+  },
+  SET_CURRENT_TAGS (state, tags) {
+    state.currentTags = tags
+  },
+  RESET_CURRENT_TAGS (state) {
+    state.currentTags = []
   }
 }
 const getters = {
@@ -32,6 +39,12 @@ const actions = {
     return tags.add(data).then(res => {
       dispatch('loadTags')
     })
+  },
+  setCurrentTags: ({commit}, tags) => {
+    commit('SET_CURRENT_TAGS', tags)
+  },
+  resetCurrentTags: ({commit}) => {
+    commit('RESET_CURRENT_TAGS')
   }
 }
 export default {

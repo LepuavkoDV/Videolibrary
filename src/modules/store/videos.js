@@ -1,19 +1,33 @@
 import videos from '../services/videos.service'
-// import _ from 'lodash'
-// import formatDate from '../utils/formatDate'
+import _ from 'lodash'
 
 const state = {
-  videos: []
+  videos: [],
+  currentVideoId: null
 }
 const mutations = {
   LOAD_VIDEOS (state, data) {
     state.videos = data
+  },
+  SET_CURRENT_VIDEO_ID (state, id) {
+    state.currentVideoId = id
+  },
+  RESET_CURRENT_VIDEO_ID (state) {
+    state.currentVideoId = null
   }
 }
 
 const getters = {
   getVideosList: (state) => () => {
     return state.videos
+  },
+  getVideoById: (state) => (id) => {
+    const video = _.find(state.videos, (i) => {
+      return i._id === id
+    })
+    if (video !== undefined) {
+      return video
+    }
   }
 }
 const actions = {
@@ -25,6 +39,24 @@ const actions = {
   addVideo: ({dispatch}, data) => {
     return videos.add(data).then(res => {
       dispatch('loadVideos')
+    })
+  },
+  setCurrentVideoId: ({commit}, id) => {
+    commit('SET_CURRENT_VIDEO_ID', id)
+  },
+  resetCurrentVideoId: ({commit}) => {
+    commit('RESET_CURRENT_VIDEO_ID')
+  },
+  updateVideoTags: ({dispatch, rootState, state}) => {
+    const data = {
+      _id: state.currentVideoId,
+      tags: rootState.tags.currentTags
+    }
+    return videos.updateTags(data).then(res => {
+      dispatch('loadVideos')
+      dispatch('loadTags')
+      dispatch('resetCurrentVideoId')
+      dispatch('resetCurrentTags')
     })
   }
 }

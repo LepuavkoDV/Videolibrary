@@ -1,5 +1,8 @@
 import result from '../system/result'
 import { Tag } from '../models/Tag'
+import { Video } from '../models/Video'
+import _ from 'lodash'
+import mongoose from 'mongoose'
 
 const tags = {
   async list () {
@@ -22,6 +25,36 @@ const tags = {
 
       result.data = await tag.save()
       result.status = 201
+    } catch (error) {
+      result.data = error
+      result.status = 500
+    }
+    return result
+  },
+
+  async updateRelations () {
+    try {
+      // getting all existing tags
+      const tags = await Tag.find()
+      _.each(tags, async (tag) => {
+        // for each tag we finding all videos related to this tag
+        const videos = await Video.find({ tags: mongoose.Types.ObjectId(tag._id) })
+        let v = []
+        _.each(videos, (item) => {
+          v.push(item._id)
+        })
+        // and update tag > video relation
+        await Tag.findByIdAndUpdate(tag, {
+          $set: { videos: v }
+        }, { new: false }, (err, tag) => {
+          if (err) {
+            result.data = err
+            result.status = 500
+          }
+        })
+      })
+      result.data = {}
+      result.status = 200
     } catch (error) {
       result.data = error
       result.status = 500

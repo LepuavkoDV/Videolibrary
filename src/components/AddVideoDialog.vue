@@ -112,7 +112,7 @@ export default {
     },
     showAddItemDialog () {
       $('#addVideoDialog').modal('hide')
-      $('#addItemModal').modal('show')
+      $('#addItemDialog').modal('show')
     }
   },
   computed: {},
@@ -124,9 +124,4 @@ export default {
 
 <style lang="css" src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
-<style scoped lang="scss">
-@import "../assets/scss/_variables.scss";
-.modal-title {
-  font-family: $font-family-lobster;
-}
-</style>
+<style scoped lang="scss"></style>
