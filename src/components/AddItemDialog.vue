@@ -1,10 +1,10 @@
 <template lang="html">
 
-  <div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
+  <div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="addItemModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 class="modal-title" id="addCategoryModalLabel">Add new category or tag</h3>
+          <h3 class="modal-title" id="addItemModalLabel">Add new category or tag</h3>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -42,10 +42,10 @@
 import $ from 'jquery'
 import Multiselect from 'vue-multiselect'
 export default {
-  name: 'src-components-add-category-dialog',
+  name: 'src-components-add-item-dialog',
   props: [],
   mounted () {
-    $('#addCategoryModal').on('hide.bs.modal', (e) => {
+    $('#addItemModal').on('hide.bs.modal', (e) => {
       $('#addVideoDialog').modal('show')
       this.resetForm()
     })
@@ -65,7 +65,23 @@ export default {
       this.item = { ...this.itemDefaultValues }
     },
     addNewItem () {
-      console.log(this.item)
+      const action = this.item.type === 'Category' ? 'addCategory' : 'addTag'
+      this.$store.dispatch(action, this.item).then(res => {
+        $('#addItemModal').modal('hide')
+        this.$notify({
+          group: 'main',
+          title: 'Success',
+          type: 'success',
+          text: 'New item added'
+        })
+      }).catch(err => {
+        this.$notify({
+          group: 'main',
+          title: 'Error',
+          type: 'error',
+          text: err.response.data.message
+        })
+      })
     }
   },
   computed: {},

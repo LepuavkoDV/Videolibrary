@@ -47,10 +47,10 @@
         <div class="modal-footer d-flex flex-row justify-content-between">
           <div class="float-left">
             <button
-              @click.prevent="showAddCategoryDialog()"
+              @click.prevent="showAddItemDialog()"
               data-toggle="tooltip"
               data-placement="top"
-              title="Add new category or tag"
+              title="Add new item"
               class="btn btn-sm btn-outline-success">
               <font-awesome-icon icon="cogs"/>
             </button>
@@ -110,13 +110,9 @@ export default {
     resetForm () {
       this.video = { ...this.videoDefaultValues }
     },
-    showAddTagDialog () {
+    showAddItemDialog () {
       $('#addVideoDialog').modal('hide')
-      $('#addTagModal').modal('show')
-    },
-    showAddCategoryDialog () {
-      $('#addVideoDialog').modal('hide')
-      $('#addCategoryModal').modal('show')
+      $('#addItemModal').modal('show')
     }
   },
   computed: {},

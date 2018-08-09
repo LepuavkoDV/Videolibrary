@@ -9,6 +9,15 @@ const categories = {
     } catch (error) {
       return error
     }
+  },
+
+  async add (data) {
+    const category = {
+      title: data.title
+    }
+
+    const res = await axios.post(apiUrl + '/categories', category)
+    return res
   }
 }
 

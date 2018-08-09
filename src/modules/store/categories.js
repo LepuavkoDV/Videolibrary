@@ -27,7 +27,13 @@ const actions = {
     categories.list().then(res => {
       commit('LOAD_CATEGORIES', res.data)
     })
+  },
+  addCategory: ({dispatch}, data) => {
+    return categories.add(data).then(res => {
+      dispatch('loadCategories')
+    })
   }
+
 }
 export default {
   state,

@@ -9,6 +9,14 @@ const tags = {
     } catch (error) {
       return error
     }
+  },
+
+  async add (data) {
+    const tag = {
+      title: data.title
+    }
+    const res = await axios.post(apiUrl + '/tags', tag)
+    return res
   }
 }
 

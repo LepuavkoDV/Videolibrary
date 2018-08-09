@@ -27,6 +27,11 @@ const actions = {
     tags.list().then(res => {
       commit('LOAD_TAGS', res.data)
     })
+  },
+  addTag: ({dispatch}, data) => {
+    return tags.add(data).then(res => {
+      dispatch('loadTags')
+    })
   }
 }
 export default {
