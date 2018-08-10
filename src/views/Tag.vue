@@ -1,18 +1,13 @@
 <template lang="html">
 
   <section class="src-views-tag">
-    <h3 class="category-title text-center mb-4" v-if="tag !== undefined" >#{{tag.title}}</h3>
-    <VideosGrid v-if="$store.state.tags.videosLoaded" :items="$store.state.tags.videos"></VideosGrid>
-    <div v-if="!$store.state.tags.videosLoaded">
-      <Loading></Loading>
-    </div>
+    <CategoryView :config="config"></CategoryView>
   </section>
 
 </template>
 
 <script lang="js">
-import VideosGrid from '../components/VideosGrid'
-import Loading from '../components/Loading'
+import CategoryView from '../components/CategoryView'
 export default {
   name: 'src-views-tag',
   props: [],
@@ -21,7 +16,13 @@ export default {
   },
   data () {
     return {
-      tag: null
+      tag: null,
+      config: {
+        mode: 'tags',
+        item: this.tag,
+        videos: this.$store.state.tags.videos,
+        videosLoaded: this.$store.state.tags.videosLoaded
+      }
     }
   },
   methods: {
@@ -34,8 +35,7 @@ export default {
   },
   computed: {},
   components: {
-    VideosGrid,
-    Loading
+    CategoryView
   },
   watch: {
     '$route' (to, from) {
@@ -43,6 +43,15 @@ export default {
     },
     '$store.state.tags.tags' (newVal) {
       this.loadInfo()
+    },
+    'tag' (newVal) {
+      this.config.item = newVal
+    },
+    '$store.state.tags.videos' (newVal) {
+      this.config.videos = newVal
+    },
+    '$store.state.tags.videosLoaded' (newVal) {
+      this.config.videosLoaded = newVal
     }
   }
 }

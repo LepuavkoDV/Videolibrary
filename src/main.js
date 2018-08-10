@@ -19,6 +19,9 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 import Notifications from 'vue-notification'
 Vue.use(Notifications)
 
+import ProgressBar from 'vue-progressbar-component'
+Vue.component('progress-bar', ProgressBar)
+
 Vue.config.productionTip = false
 
 new Vue({
