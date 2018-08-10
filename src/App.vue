@@ -17,6 +17,9 @@ export default {
     this.$store.dispatch('loadCategories')
     this.$store.dispatch('loadTags')
   },
+  data () {
+    return {}
+  },
   components: {
     Nav
   }

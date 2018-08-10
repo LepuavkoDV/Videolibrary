@@ -4,7 +4,8 @@ import formatDate from '../utils/formatDate'
 
 const state = {
   categories: [],
-  videos: []
+  videos: [],
+  videosLoaded: false
 }
 const mutations = {
   LOAD_CATEGORIES (state, data) {
@@ -12,6 +13,12 @@ const mutations = {
   },
   SET_VIDEOS (state, data) {
     state.videos = data
+  },
+  VIDEOS_NOT_LOADED (state) {
+    state.videosLoaded = false
+  },
+  VIDEOS_LOADED (state) {
+    state.videosLoaded = true
   }
 }
 const getters = {
@@ -47,8 +54,10 @@ const actions = {
     })
   },
   loadCategoryVideos: ({commit}, id) => {
+    commit('VIDEOS_NOT_LOADED')
     categories.videos(id).then(res => {
       commit('SET_VIDEOS', res.data)
+      commit('VIDEOS_LOADED')
     })
   }
 

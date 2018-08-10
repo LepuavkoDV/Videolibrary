@@ -5,7 +5,8 @@ import formatDate from '../utils/formatDate'
 const state = {
   tags: [],
   currentTags: [],
-  videos: []
+  videos: [],
+  videosLoaded: false
 }
 const mutations = {
   LOAD_TAGS (state, data) {
@@ -19,6 +20,12 @@ const mutations = {
   },
   SET_VIDEOS (state, data) {
     state.videos = data
+  },
+  VIDEOS_NOT_LOADED (state) {
+    state.videosLoaded = false
+  },
+  VIDEOS_LOADED (state) {
+    state.videosLoaded = true
   }
 }
 const getters = {
@@ -34,11 +41,11 @@ const getters = {
     return list
   },
   getTagByName: (state) => (name) => {
-    let category = _.find(state.tags, (c) => {
+    let tag = _.find(state.tags, (c) => {
       return _.kebabCase(c.title) === name
     })
-    if (category !== undefined) {
-      return category
+    if (tag !== undefined) {
+      return tag
     }
   }
 }
@@ -60,8 +67,10 @@ const actions = {
     commit('RESET_CURRENT_TAGS')
   },
   loadTagVideos: ({commit}, id) => {
+    commit('VIDEOS_NOT_LOADED')
     tags.videos(id).then(res => {
       commit('SET_VIDEOS', res.data)
+      commit('VIDEOS_LOADED')
     })
   }
 }

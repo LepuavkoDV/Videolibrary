@@ -1,17 +1,15 @@
 <template>
   <section>
-    <div class="videos-container d-flex flex-row flex-wrap justify-content-around align-items-stretch">
-      <Video v-for="(item, index) in $store.getters.getVideosList()" :key="index" :video="item"></Video>
-    </div>
+    <VideosGrid :items="$store.getters.getVideosList()"></VideosGrid>
   </section>
 </template>
 
 <script>
-import Video from '../components/Video'
+import VideosGrid from '../components/VideosGrid'
 export default {
   name: 'home',
   components: {
-    Video
+    VideosGrid
   },
   data () {
     return {}

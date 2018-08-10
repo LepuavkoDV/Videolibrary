@@ -9,7 +9,16 @@
     </div>
     <div class="video-box d-flex flex-column border rounded shadow-sm p-1 mb-4">
       <div class="embed-responsive rounded embed-responsive-16by9">
-        <iframe class="embed-responsive-item" width="auto" height="150" :src="url" allowfullscreen></iframe>
+        <iframe
+          class="embed-responsive-item"
+          width="auto"
+          height="150"
+          :src="url"
+          allowfullscreen
+          v-show="loaded"
+          @load="loadComplete"
+          ref="frame"
+        ></iframe>
       </div>
       <div class="video-item__info">
         <div class="video-description d-flex justify-content-center py-1 px-5">
@@ -45,14 +54,21 @@
 import $ from 'jquery'
 import moment from 'moment'
 import _ from 'lodash'
+import Loading from './Loading'
 export default {
   name: 'src-components-video',
   props: ['video'],
   mounted () {},
   data () {
-    return {}
+    return {
+      loaded: false
+    }
   },
   methods: {
+    loadComplete () {
+      this.loaded = true
+      this.$emit('loaded', this._props.video._id)
+    },
     showAddTagToVideoDialog (videoId) {
       const video = this.$store.getters.getVideoById(videoId)
       this.$store.dispatch('setCurrentVideoId', videoId)
@@ -82,6 +98,9 @@ export default {
     category () {
       return this._props.video.category.title
     }
+  },
+  components: {
+    Loading
   }
 }
 </script>

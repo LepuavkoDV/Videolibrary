@@ -1,11 +1,17 @@
+html {
+  overflow-y: scroll;
+}
+
 body {
   font-weight: 200;
   background-color: $gray-100;
   .container-fluid {
     background-color: $white;
+    min-height: 90vh;
   }
 }
 
-.modal-title {
-  font-family: $font-family-lobster;
+.category-title {
+  font-family: $font-family-jura;
+  color: $gray-500;
 }

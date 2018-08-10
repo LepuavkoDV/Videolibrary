@@ -1,39 +1,52 @@
 <template lang="html">
 
   <section class="src-views-tag">
-    <h1>#{{tag.title}}</h1>
-    <div class="videos-container d-flex flex-row flex-wrap justify-content-around align-items-stretch">
-      <Video v-for="(item, index) in $store.state.tags.videos" :key="index" :video="item"></Video>
+    <h3 class="category-title text-center mb-4" v-if="tag !== undefined" >#{{tag.title}}</h3>
+    <VideosGrid v-if="$store.state.tags.videosLoaded" :items="$store.state.tags.videos"></VideosGrid>
+    <div v-if="!$store.state.tags.videosLoaded">
+      <Loading></Loading>
     </div>
   </section>
 
 </template>
 
 <script lang="js">
-import Video from '../components/Video'
+import VideosGrid from '../components/VideosGrid'
+import Loading from '../components/Loading'
 export default {
   name: 'src-views-tag',
   props: [],
-  mounted () {
-    this.$store.dispatch('loadTagVideos', this.tag._id)
+  created () {
+    this.loadInfo()
   },
   data () {
-    return {}
-  },
-  methods: {},
-  computed: {
-    tag () {
-      return this.$store.getters.getTagByName(this.$route.params.tagName)
+    return {
+      tag: null
     }
   },
+  methods: {
+    loadInfo () {
+      this.tag = this.$store.getters.getTagByName(this.$route.params.tagName)
+      if (this.tag !== undefined) {
+        this.$store.dispatch('loadTagVideos', this.tag._id)
+      }
+    }
+  },
+  computed: {},
   components: {
-    Video
+    VideosGrid,
+    Loading
+  },
+  watch: {
+    '$route' (to, from) {
+      this.loadInfo()
+    },
+    '$store.state.tags.tags' (newVal) {
+      this.loadInfo()
+    }
   }
 }
 </script>
 
 <style scoped lang="scss">
-  .src-views-tag {
-
-  }
 </style>
