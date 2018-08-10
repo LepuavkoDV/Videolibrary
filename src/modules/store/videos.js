@@ -55,6 +55,7 @@ const actions = {
     return videos.updateTags(data).then(res => {
       dispatch('loadVideos')
       dispatch('loadTags')
+      dispatch('loadCategories')
       dispatch('resetCurrentVideoId')
       dispatch('resetCurrentTags')
     })
