@@ -4,9 +4,21 @@ import Tags from './tags.controller'
 import _ from 'lodash'
 
 const videos = {
-  async list () {
+  async list (query = null) {
     try {
-      result.data = await Video.find().populate('category').populate('tags').sort('createdAt')
+      let scope = {}
+      if (query !== null) {
+        switch (query.type) {
+          case 'category':
+            scope.category = query.id
+            break
+          case 'tag':
+            scope.tags = query.id
+            break
+        }
+      }
+
+      result.data = await Video.find(scope).populate('category').populate('tags').sort('createdAt')
       result.status = 200
     } catch (error) {
       result.data = error

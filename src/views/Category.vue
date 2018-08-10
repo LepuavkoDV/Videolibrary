@@ -3,7 +3,7 @@
   <section class="src-views-category">
     <h1>{{category.title}}</h1>
     <div class="videos-container d-flex flex-row flex-wrap justify-content-around align-items-stretch">
-      <Video v-for="(item, index) in category.videos" :key="index" :video="item"></Video>
+      <Video v-for="(item, index) in $store.state.categories.videos" :key="index" :video="item"></Video>
     </div>
   </section>
 
@@ -14,7 +14,9 @@ import Video from '../components/Video'
 export default {
   name: 'src-views-category',
   props: [],
-  mounted () {},
+  mounted () {
+    this.$store.dispatch('loadCategoryVideos', this.category._id)
+  },
   data () {
     return {}
   },
@@ -29,5 +31,4 @@ export default {
   }
 }
 </script>
-
 <style scoped lang="scss"></style>

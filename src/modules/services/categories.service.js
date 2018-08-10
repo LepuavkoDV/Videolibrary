@@ -18,6 +18,15 @@ const categories = {
 
     const res = await axios.post(apiUrl + '/categories', category)
     return res
+  },
+
+  async videos (id) {
+    try {
+      const data = await axios.get(apiUrl + '/categories/' + id + '/videos')
+      return data
+    } catch (error) {
+      return error
+    }
   }
 }
 

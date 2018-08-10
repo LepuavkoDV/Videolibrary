@@ -4,7 +4,8 @@ import formatDate from '../utils/formatDate'
 
 const state = {
   tags: [],
-  currentTags: []
+  currentTags: [],
+  videos: []
 }
 const mutations = {
   LOAD_TAGS (state, data) {
@@ -15,6 +16,9 @@ const mutations = {
   },
   RESET_CURRENT_TAGS (state) {
     state.currentTags = []
+  },
+  SET_VIDEOS (state, data) {
+    state.videos = data
   }
 }
 const getters = {
@@ -28,6 +32,14 @@ const getters = {
       }
     })
     return list
+  },
+  getTagByName: (state) => (name) => {
+    let category = _.find(state.tags, (c) => {
+      return _.kebabCase(c.title) === name
+    })
+    if (category !== undefined) {
+      return category
+    }
   }
 }
 const actions = {
@@ -46,6 +58,11 @@ const actions = {
   },
   resetCurrentTags: ({commit}) => {
     commit('RESET_CURRENT_TAGS')
+  },
+  loadTagVideos: ({commit}, id) => {
+    tags.videos(id).then(res => {
+      commit('SET_VIDEOS', res.data)
+    })
   }
 }
 export default {

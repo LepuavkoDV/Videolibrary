@@ -3,11 +3,15 @@ import _ from 'lodash'
 import formatDate from '../utils/formatDate'
 
 const state = {
-  categories: []
+  categories: [],
+  videos: []
 }
 const mutations = {
   LOAD_CATEGORIES (state, data) {
     state.categories = data
+  },
+  SET_VIDEOS (state, data) {
+    state.videos = data
   }
 }
 const getters = {
@@ -40,6 +44,11 @@ const actions = {
   addCategory: ({dispatch}, data) => {
     return categories.add(data).then(res => {
       dispatch('loadCategories')
+    })
+  },
+  loadCategoryVideos: ({commit}, id) => {
+    categories.videos(id).then(res => {
+      commit('SET_VIDEOS', res.data)
     })
   }
 

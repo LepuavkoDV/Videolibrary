@@ -36,14 +36,14 @@ const tags = {
     try {
       _.each(tags, async (tag) => {
         // for each tag we finding all videos related to this tag
-        const videos = await Video.find({ tags: mongoose.Types.ObjectId(tag) })
-        let v = []
-        _.each(videos, (item) => {
-          v.push(item._id)
+        const videosWithThisTag = await Video.find({ tags: mongoose.Types.ObjectId(tag) })
+        let videos = []
+        _.each(videosWithThisTag, (item) => {
+          videos.push(item._id)
         })
         // and update tag > video relation
         await Tag.findByIdAndUpdate(tag, {
-          $set: { videos: v }
+          $set: { videos: videos }
         }, { new: false }, (err, tag) => {
           if (err) {
             result.data = err

@@ -4,6 +4,7 @@ import Home from '../../views/Home'
 import Categories from '../../views/Categories'
 import Category from '../../views/Category'
 import Tags from '../../views/Tags'
+import Tag from '../../views/Tag'
 
 Vue.use(Router)
 
@@ -11,7 +12,8 @@ const routes = [
   { path: '/', name: '/', component: Home },
   { path: '/categories', name: 'categories', component: Categories },
   { path: '/categories/:categoryName', name: 'category-listing', component: Category },
-  { path: '/tags', name: 'tags', component: Tags }
+  { path: '/tags', name: 'tags', component: Tags },
+  { path: '/tags/:tagName', name: 'tag-listing', component: Tag }
   // { path: '/*', name: '404', component: p404 }
 ]
 

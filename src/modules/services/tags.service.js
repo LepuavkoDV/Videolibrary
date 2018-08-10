@@ -17,6 +17,15 @@ const tags = {
     }
     const res = await axios.post(apiUrl + '/tags', tag)
     return res
+  },
+
+  async videos (id) {
+    try {
+      const data = await axios.get(apiUrl + '/tags/' + id + '/videos')
+      return data
+    } catch (error) {
+      return error
+    }
   }
 }
 

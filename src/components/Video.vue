@@ -24,7 +24,7 @@
             :key="index"
             class="tag"
             :to="generateLink(tag.title, 'tags')">
-            {{tag.title}}
+            #{{tag.title}}
           </router-link>
           <a
             @click.prevent="showAddTagToVideoDialog(_props.video._id)"
