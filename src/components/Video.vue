@@ -40,8 +40,8 @@
             href="#"
             class="tag"
             data-toggle="tooltip"
-            data-placement="right"
-            title="Add tag"><font-awesome-icon icon="plus"/>
+            data-placement="top"
+            title="Edit tags"><font-awesome-icon icon="plus"/>
           </a>
         </div>
       </div>

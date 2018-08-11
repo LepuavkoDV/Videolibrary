@@ -4,7 +4,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 class="modal-title" id="assignTagToVideoDialogLabel">Add tag</h3>
+          <h3 class="modal-title" id="assignTagToVideoDialogLabel">Edit tags</h3>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -29,7 +29,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button @click.prevent="assignTags()" type="button" class="btn btn-danger btn-sm">Add</button>
+          <button @click.prevent="assignTags()" type="button" class="btn btn-danger btn-sm">Save</button>
           <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
         </div>
       </div>
