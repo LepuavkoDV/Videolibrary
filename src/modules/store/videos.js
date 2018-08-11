@@ -3,11 +3,13 @@ import _ from 'lodash'
 
 const state = {
   videos: [],
-  currentVideoId: null
+  currentVideoId: null,
+  videosLoaded: false
 }
 const mutations = {
   LOAD_VIDEOS (state, data) {
     state.videos = data
+    state.videosLoaded = true
   },
   SET_CURRENT_VIDEO_ID (state, id) {
     state.currentVideoId = id

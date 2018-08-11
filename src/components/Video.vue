@@ -107,8 +107,9 @@ export default {
 
 <style scoped lang="scss">
 @import "../assets/scss/_variables";
+@import "../assets/scss/_mixins";
 .video-item {
-  width: 30%;
+  width: 100%;
   .video-title {
     padding: .25rem 0;
     .video-title__title {
@@ -153,6 +154,13 @@ export default {
     }
   }
 }
+
+@include media-breakpoint-up(md) {
+  .video-item {
+    width: 30%;
+  }
+}
+
 @keyframes shadowAppear {
   0% {
     transform: rotate(xx);

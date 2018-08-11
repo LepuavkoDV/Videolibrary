@@ -1,6 +1,6 @@
 <template lang="html">
 
-  <section class="pt-2">
+  <section class="pt-3 d-flex flex-row justify-content-between">
     <ul class="nav justify-content-center">
       <li class="nav-item">
         <a
@@ -15,7 +15,7 @@
       </li>
       <li class="nav-item" v-for="(link, index) in links" :key="index">
         <router-link
-          :class="['nav-link', { 'active': currentRoute === link.to}]"
+          :class="['nav-link', { 'btn btn-sm btn-outline-danger btn-round active': currentRoute === link.to}]"
           :to="link.to"
           data-toggle="tooltip"
           data-placement="top"
@@ -24,6 +24,22 @@
         </router-link>
       </li>
     </ul>
+    <div>
+      <button
+        @click.prevent="showAddItemDialog()"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Add new category or tag"
+        class="btn btn-sm btn-outline-danger btn-round">
+        <font-awesome-icon icon="cogs"/>
+      </button>
+      <a
+        target="_blank"
+        href="https://github.com/LepuavkoDV/Videolibrary"
+        class="btn btn-sm btn-outline-secondary btn-round">
+        <font-awesome-icon :icon="['fab', 'github']" />
+      </a>
+    </div>
   </section>
 
 </template>
@@ -55,6 +71,9 @@ export default {
   methods: {
     showAddVideoDialog () {
       $('#addVideoDialog').modal('show')
+    },
+    showAddItemDialog () {
+      $('#addItemDialog').modal('show')
     }
   },
   computed: {},
@@ -72,14 +91,14 @@ export default {
 .nav {
   .nav-link {
     color: $danger;
+    padding: .25rem .5rem;
     &.active {
       color: $white;
-      border: 1px solid $danger;
-      border-radius: 250%;
-      background-color: $danger;
-      padding: .25rem .5rem;
-      margin: .2rem .2rem 0;
     }
   }
+}
+
+.btn-round {
+  border-radius: 100rem;
 }
 </style>

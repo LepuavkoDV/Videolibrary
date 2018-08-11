@@ -46,7 +46,6 @@ export default {
   props: [],
   mounted () {
     $('#addItemDialog').on('hide.bs.modal', (e) => {
-      $('#addVideoDialog').modal('show')
       this.resetForm()
     })
     this.itemDefaultValues = { ...this.item }

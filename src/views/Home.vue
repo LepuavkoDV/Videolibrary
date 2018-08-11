@@ -1,6 +1,6 @@
 <template>
   <section>
-    <VideosGrid :items="$store.getters.getVideosList()"></VideosGrid>
+    <VideosGrid v-if="$store.state.videos.videosLoaded" :items="$store.getters.getVideosList()"></VideosGrid>
   </section>
 </template>
 

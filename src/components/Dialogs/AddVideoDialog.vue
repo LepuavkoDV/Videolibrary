@@ -44,21 +44,9 @@
             </div>
           </form>
         </div>
-        <div class="modal-footer d-flex flex-row justify-content-between">
-          <div class="float-left">
-            <button
-              @click.prevent="showAddItemDialog()"
-              data-toggle="tooltip"
-              data-placement="top"
-              title="Add new item"
-              class="btn btn-sm btn-outline-success">
-              <font-awesome-icon icon="cogs"/>
-            </button>
-          </div>
-          <div class="float-right">
+        <div class="modal-footer">
             <button @click.prevent="addVideo()" type="button" class="btn btn-danger btn-sm">Add</button>
             <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
-          </div>
         </div>
       </div>
     </div>
@@ -109,10 +97,6 @@ export default {
     },
     resetForm () {
       this.video = { ...this.videoDefaultValues }
-    },
-    showAddItemDialog () {
-      $('#addVideoDialog').modal('hide')
-      $('#addItemDialog').modal('show')
     }
   },
   computed: {},

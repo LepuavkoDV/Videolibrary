@@ -8,12 +8,14 @@ import 'bootstrap'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faPlus, faFolderOpen, faTags, faHome, faCogs } from '@fortawesome/free-solid-svg-icons'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 library.add(faPlus)
 library.add(faFolderOpen)
 library.add(faTags)
 library.add(faHome)
 library.add(faCogs)
+library.add(faGithub)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 import Notifications from 'vue-notification'
