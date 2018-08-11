@@ -1,25 +1,25 @@
 .vue-notification {
   padding: 10px;
-  margin: 15px 15px 0px;
+  margin: 15px 15px 0px !important;
  
   font-size: 12px;
  
   color: $white;
-  background: $primary;
-  border-left: 5px solid lighten($primary, 25%);
+  background: $primary !important;
+  border-left: 5px solid lighten($primary, 25%) !important;
  
   &.warn {
-    background: $warning;
-    border-left-color: lighten($warning, 25%);
+    background: $warning !important;
+    border-left-color: lighten($warning, 25%) !important;
   }
  
   &.error {
-    background: $danger;
-    border-left-color: lighten($danger, 25%);
+    background: $danger !important;
+    border-left-color: lighten($danger, 25%) !important;
   }
  
   &.success {
-    background: $success;
-    border-left-color: lighten($success, 25%);
+    background: $success !important;
+    border-left-color: lighten($success, 25%) !important;
   }
 }
