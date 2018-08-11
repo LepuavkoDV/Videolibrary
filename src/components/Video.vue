@@ -27,7 +27,7 @@
             <!-- <a href="#">Author</a> -->
           </div>
         </div>
-        <div class="video-tags d-flex justify-content-center">
+        <div class="video-tags d-flex justify-content-center flex-wrap">
           <router-link
             v-for="(tag, index) in _props.video.tags"
             :key="index"
