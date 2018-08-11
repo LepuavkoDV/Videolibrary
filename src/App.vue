@@ -12,7 +12,7 @@
 
 <script lang="js">
 import Nav from './components/Nav'
-import Dialogs from './components/Dialogs/'
+import Dialogs from './components/Dialogs/Index'
 export default {
   beforeMount () {
     this.$store.dispatch('loadVideos')
