@@ -24,9 +24,6 @@
         </router-link>
       </li>
     </ul>
-    <AddVideoDialog></AddVideoDialog>
-    <AddItemDialog></AddItemDialog>
-    <AssignTagToVideoDialog></AssignTagToVideoDialog>
   </section>
 
 </template>
@@ -34,9 +31,6 @@
 <script lang="js">
 import $ from 'jquery'
 import router from '../modules/router'
-import AddVideoDialog from './AddVideoDialog'
-import AddItemDialog from './AddItemDialog'
-import AssignTagToVideoDialog from './AssignTagToVideoDialog'
 export default {
   name: 'src-components-nav',
   props: [],
@@ -64,11 +58,7 @@ export default {
     }
   },
   computed: {},
-  components: {
-    AddVideoDialog,
-    AddItemDialog,
-    AssignTagToVideoDialog
-  },
+  components: {},
   watch: {
     '$route' (to, from) {
       this.currentRoute = to.path

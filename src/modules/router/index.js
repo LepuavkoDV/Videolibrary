@@ -1,19 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../../views/Home'
-import Categories from '../../views/Categories'
-import Category from '../../views/Category'
-import Tags from '../../views/Tags'
-import Tag from '../../views/Tag'
+import Items from '../../views/Items'
+import Item from '../../views/Item'
 
 Vue.use(Router)
 
 const routes = [
   { path: '/', name: '/', component: Home },
-  { path: '/categories', name: 'categories', component: Categories },
-  { path: '/categories/:categoryName', name: 'category-listing', component: Category },
-  { path: '/tags', name: 'tags', component: Tags },
-  { path: '/tags/:tagName', name: 'tag-listing', component: Tag }
+  { path: '/categories', name: 'categories', component: Items },
+  { path: '/categories/:categoryName', name: 'category-listing', component: Item },
+  { path: '/tags', name: 'tags', component: Items },
+  { path: '/tags/:tagName', name: 'tag-listing', component: Item }
   // { path: '/*', name: '404', component: p404 }
 ]
 

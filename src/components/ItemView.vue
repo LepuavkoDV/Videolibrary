@@ -13,7 +13,7 @@
 <script lang="js">
 import VideosGrid from '../components/VideosGrid'
 export default {
-  name: 'src-components-category-view',
+  name: 'src-components-item-view',
   props: ['config'],
   created () {},
   data () {

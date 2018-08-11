@@ -6,11 +6,13 @@
       <router-link to="/"><h1 class="mb-4 pb-2 text-center">Videolibrary</h1></router-link>
     </section>
     <router-view/>
+    <Dialogs></Dialogs>
   </div>
 </template>
 
 <script lang="js">
 import Nav from './components/Nav'
+import Dialogs from './components/Dialogs/'
 export default {
   beforeMount () {
     this.$store.dispatch('loadVideos')
@@ -21,7 +23,8 @@ export default {
     return {}
   },
   components: {
-    Nav
+    Nav,
+    Dialogs
   }
 }
 </script>
