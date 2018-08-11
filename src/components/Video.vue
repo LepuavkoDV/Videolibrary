@@ -41,7 +41,7 @@
             class="tag"
             data-toggle="tooltip"
             data-placement="top"
-            title="Edit tags"><font-awesome-icon icon="plus"/>
+            title="Edit tags"><font-awesome-icon icon="wrench"/>
           </a>
         </div>
       </div>
