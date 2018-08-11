@@ -86,7 +86,7 @@ export default {
   computed: {
     videoName () {
       return _.truncate(this._props.video.title, {
-        'length': 20,
+        'length': 30,
         'omission': '...'
       })
     },
