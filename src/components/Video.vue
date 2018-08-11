@@ -40,7 +40,7 @@
             href="#"
             class="tag"
             data-toggle="tooltip"
-            data-placement="top"
+            data-placement="right"
             title="Add tag"><font-awesome-icon icon="plus"/>
           </a>
         </div>
@@ -58,7 +58,11 @@ import Loading from './Loading'
 export default {
   name: 'src-components-video',
   props: ['video'],
-  mounted () {},
+  mounted () {
+    $('[data-toggle="tooltip"]').tooltip({
+      trigger: 'hover'
+    })
+  },
   data () {
     return {
       loaded: false

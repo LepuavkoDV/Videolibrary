@@ -1,7 +1,7 @@
 <template lang="html">
 
-  <section class="pt-3 d-flex flex-row justify-content-between">
-    <ul class="nav justify-content-center">
+  <section class="pt-3 d-flex flex-column flex-md-row justify-content-between align-items-center">
+    <ul class="nav justify-content-center flex-nowrap">
       <li class="nav-item">
         <a
           @click.prevent="showAddVideoDialog()"

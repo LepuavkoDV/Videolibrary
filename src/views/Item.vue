@@ -61,6 +61,7 @@ export default {
   watch: {
     '$route' (to, from) {
       this.loadInfo()
+      this.config.mode = this.mode()
     },
     '$store.state.categories.categories' (newVal) {
       this.loadInfo()
