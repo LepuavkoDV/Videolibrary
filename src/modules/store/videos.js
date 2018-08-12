@@ -41,6 +41,7 @@ const actions = {
   addVideo: ({dispatch}, data) => {
     return videos.add(data).then(res => {
       dispatch('loadVideos')
+      dispatch('loadTags')
     })
   },
   setCurrentVideoId: ({commit}, id) => {
@@ -57,7 +58,6 @@ const actions = {
     return videos.updateTags(data).then(res => {
       dispatch('loadVideos')
       dispatch('loadTags')
-      dispatch('loadCategories')
       dispatch('resetCurrentVideoId')
       dispatch('resetCurrentTags')
     })

@@ -2,7 +2,7 @@
 
   <section class="src-components-dialogs">
     <AddVideoDialog></AddVideoDialog>
-    <AddItemDialog></AddItemDialog>
+    <AddTagDialog></AddTagDialog>
     <AssignTagToVideoDialog></AssignTagToVideoDialog>
   </section>
 
@@ -10,7 +10,7 @@
 
 <script lang="js">
 import AddVideoDialog from './AddVideoDialog'
-import AddItemDialog from './AddItemDialog'
+import AddTagDialog from './AddTagDialog'
 import AssignTagToVideoDialog from './AssignTagToVideoDialog'
 export default {
   name: 'src-components-dialogs',
@@ -23,7 +23,7 @@ export default {
   computed: {},
   components: {
     AddVideoDialog,
-    AddItemDialog,
+    AddTagDialog,
     AssignTagToVideoDialog
   }
 }

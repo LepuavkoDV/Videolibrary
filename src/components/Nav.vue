@@ -29,7 +29,7 @@
         @click.prevent="showAddItemDialog()"
         data-toggle="tooltip"
         data-placement="top"
-        title="Add new category or tag"
+        title="Add new tag"
         class="btn btn-sm btn-outline-danger btn-round">
         <font-awesome-icon icon="cogs"/>
       </button>
@@ -63,7 +63,6 @@ export default {
       currentRoute: null,
       links: [
         { to: '/', icon: 'home', tooltip: 'Home' },
-        { to: '/categories', icon: 'folder-open', tooltip: 'Categories' },
         { to: '/tags', icon: 'tags', tooltip: 'Tags' }
       ]
     }
@@ -73,7 +72,7 @@ export default {
       $('#addVideoDialog').modal('show')
     },
     showAddItemDialog () {
-      $('#addItemDialog').modal('show')
+      $('#addTagDialog').modal('show')
     }
   },
   computed: {},

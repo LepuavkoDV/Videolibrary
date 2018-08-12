@@ -16,7 +16,6 @@ import Dialogs from './components/Dialogs/Index'
 export default {
   beforeMount () {
     this.$store.dispatch('loadVideos')
-    this.$store.dispatch('loadCategories')
     this.$store.dispatch('loadTags')
   },
   data () {

@@ -1,12 +1,6 @@
 <template lang="html">
 
   <div class="video-item">
-    <div class="video-title d-flex justify-content-between">
-      <h5 class="video-title__title">{{videoName}}</h5>
-      <div>
-        <span class="badge badge-danger">{{duration}}</span>
-      </div>
-    </div>
     <div class="video-box d-flex flex-column border rounded shadow-sm p-1 mb-4">
       <div class="embed-responsive rounded embed-responsive-16by9">
         <iframe
@@ -20,11 +14,11 @@
           ref="frame"
         ></iframe>
       </div>
-      <div class="video-item__info">
-        <div class="video-description d-flex justify-content-center py-1 px-5">
+      <div class="video-item__info my-3 mx-1">
+        <div class="video-title d-flex justify-content-between">
+          <h5 class="video-title__title">{{videoName}}</h5>
           <div>
-            <router-link :to="generateLink(category, 'categories')">{{category}}</router-link>
-            <!-- <a href="#">Author</a> -->
+            <span class="badge badge-danger">{{duration}}</span>
           </div>
         </div>
         <div class="video-tags d-flex justify-content-center flex-wrap">
@@ -41,7 +35,7 @@
             class="tag"
             data-toggle="tooltip"
             data-placement="top"
-            title="Edit tags"><font-awesome-icon icon="wrench"/>
+            title="Edit tags"><font-awesome-icon icon="tags"/>
           </a>
         </div>
       </div>
@@ -98,9 +92,6 @@ export default {
     },
     url () {
       return 'https://www.youtube.com/embed/' + this._props.video.YTId + '?rel=0'
-    },
-    category () {
-      return this._props.video.category.title
     }
   },
   components: {
@@ -131,22 +122,10 @@ export default {
     }
   }
   .video-item__info {
-    .video-description {
-      border-bottom: 1px solid $gray-200;
-      a {
-        color: $danger;
-        font-weight: 300;
-        font-size: .9rem;
-        &:hover {
-          color: $gray-700;
-          text-decoration: none;
-        }
-      }
-    }
     .video-tags {
       .tag {
         font-family: $font-family-jura;
-        color: $success;
+        color: $danger;
         font-size: .8rem;
         font-weight: 400;
         margin-left: .25em;

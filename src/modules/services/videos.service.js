@@ -27,7 +27,6 @@ const videos = {
       title: YTVideo.data.items[0].snippet.title,
       duration: duration,
       link: data.link,
-      category: data.category._id,
       tags: tags
     }
     const res = await axios.post(apiUrl + '/videos', video)
