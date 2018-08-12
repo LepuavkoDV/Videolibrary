@@ -1,11 +1,11 @@
 <template lang="html">
 
-  <section class="pt-3 d-flex flex-column flex-md-row justify-content-between align-items-center">
+  <section class="pt-3 d-flex flex-column flex-md-row justify-content-end align-items-center">
     <ul class="nav justify-content-center flex-nowrap">
       <li class="nav-item">
         <a
           @click.prevent="showAddVideoDialog()"
-          class="nav-link"
+          class="nav-link btn btn-sm btn-outline-danger"
           href="#"
           data-toggle="tooltip"
           data-placement="top"
@@ -15,7 +15,7 @@
       </li>
       <li class="nav-item" v-for="(link, index) in links" :key="index">
         <router-link
-          :class="['nav-link', { 'btn btn-sm btn-outline-danger btn-round active': currentRoute === link.to}]"
+          :class="['nav-link btn btn-sm btn-outline-danger', { 'active': currentRoute === link.to}]"
           :to="link.to"
           data-toggle="tooltip"
           data-placement="top"
@@ -23,23 +23,28 @@
           <font-awesome-icon :icon="link.icon" />
         </router-link>
       </li>
+      <li class="nav-item">
+        <button
+          @click.prevent="showAddItemDialog()"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Add new tag"
+          class="nav-link btn btn-sm btn-outline-danger">
+          <font-awesome-icon icon="cog"/>
+        </button>
+      </li>
+      <li class="nav-item">
+        <a
+          target="_blank"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Github repository"
+          href="https://github.com/LepuavkoDV/Videolibrary"
+          class="nav-link btn btn-sm btn-outline-secondary">
+          <font-awesome-icon :icon="['fab', 'github']" />
+        </a>
+      </li>
     </ul>
-    <div>
-      <button
-        @click.prevent="showAddItemDialog()"
-        data-toggle="tooltip"
-        data-placement="top"
-        title="Add new tag"
-        class="btn btn-sm btn-outline-danger btn-round">
-        <font-awesome-icon icon="cogs"/>
-      </button>
-      <a
-        target="_blank"
-        href="https://github.com/LepuavkoDV/Videolibrary"
-        class="btn btn-sm btn-outline-secondary btn-round">
-        <font-awesome-icon :icon="['fab', 'github']" />
-      </a>
-    </div>
   </section>
 
 </template>
@@ -79,7 +84,9 @@ export default {
   components: {},
   watch: {
     '$route' (to, from) {
-      this.currentRoute = to.path
+      this.currentRoute = to.name === 'tag-listing'
+        ? '/tags'
+        : to.path
     }
   }
 }
@@ -91,13 +98,16 @@ export default {
   .nav-link {
     color: $danger;
     padding: .25rem .5rem;
-    &.active {
+    margin-left: .5rem;
+    &.active, &:hover {
       color: $white;
     }
+    &.btn-outline-secondary {
+      color: $secondary;
+      &:hover {
+        color: $white;
+      }
+    }
   }
-}
-
-.btn-round {
-  border-radius: 100rem;
 }
 </style>
