@@ -105,6 +105,9 @@ export default {
 @import "../assets/scss/_mixins";
 .video-item {
   width: 100%;
+  background-color: lighten($danger, 43%);
+  padding: 0;
+  margin: 0;
   .video-title {
     padding: .25rem 0;
     .video-title__title {

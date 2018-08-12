@@ -40,7 +40,7 @@
           data-placement="top"
           title="Github repository"
           href="https://github.com/LepuavkoDV/Videolibrary"
-          class="nav-link btn btn-sm btn-outline-secondary">
+          class="nav-link btn btn-sm btn-outline-danger">
           <font-awesome-icon :icon="['fab', 'github']" />
         </a>
       </li>

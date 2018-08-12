@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container-fluid w-75 my-5 px-5 pb-2 rounded shadow">
+  <div id="app" class="container-fluid rounded shadow">
     <notifications group="main" />
     <Nav></Nav>
     <section class="heading">

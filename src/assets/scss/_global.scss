@@ -4,10 +4,17 @@ html {
 
 body {
   font-weight: 200;
-  background-color: $gray-100;
+  background-color: lighten($danger, 43%);
   .container-fluid {
-    background-color: $white;
+    background-color: lighten($danger, 46%);
     min-height: 90vh;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .container-fluid {
+    width: 75%;
+    margin: 2rem auto;
   }
 }
 
