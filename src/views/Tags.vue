@@ -1,13 +1,13 @@
 <template lang="html">
 
-  <section class="src-components-items-list">
+  <section class="src-views-items">
     <div class="items-list d-flex flex-row flex-wrap justify-content-center align-items-start align-content-start px-5">
       <div
         class="item d-flex flex-column align-items-center"
-        v-for="(item, index) in items"
+        v-for="(tag, index) in this.$store.state.tags.tags"
         :key="index">
-        <router-link :to="makeLink(item.title)"><span v-if="_props.mode === 'tags'">#</span>{{item.title}}</router-link>
-        <div class="item-videos">Videos: {{item.videos.length}}</div>
+        <router-link :to="makeLink(tag.title)"><span>#</span>{{tag.title}}</router-link>
+        <div class="item-videos">Videos: {{tag.videos.length}}</div>
       </div>
     </div>
   </section>
@@ -17,23 +17,23 @@
 <script lang="js">
 import _ from 'lodash'
 export default {
-  name: 'src-components-items-list',
-  props: ['items', 'mode'],
+  name: 'src-views-items',
+  props: [],
   mounted () {},
   data () {
     return {}
   },
   methods: {
     makeLink (name) {
-      const prefix = this._props.mode === 'tags' ? '/tags/' : '/categories/'
-      return prefix + _.kebabCase(name)
+      return '/tags/' + _.kebabCase(name)
     }
   },
-  computed: {}
+  computed: {},
+  components: {}
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @import "../assets/scss/_variables.scss";
 .items-list {
   .item {

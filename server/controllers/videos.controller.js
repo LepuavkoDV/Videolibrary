@@ -18,7 +18,7 @@ const videos = {
         }
       }
 
-      result.data = await Video.find(scope).populate('category').populate('tags').sort('-createdAt')
+      result.data = await Video.find(scope).populate('tags').sort('-createdAt')
       result.status = 200
     } catch (error) {
       result.data = error
@@ -34,7 +34,6 @@ const videos = {
         title: data.title,
         duration: data.duration,
         link: data.link,
-        category: data.category,
         tags: data.tags,
         createdAt: new Date()
       })

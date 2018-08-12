@@ -16,19 +16,6 @@
               <input v-model="video.link" type="email" class="form-control" id="link" aria-describedby="emailHelp" placeholder="Enter Youtube video url">
             </div>
             <div class="form-group">
-              <label for="category">Category</label>
-              <multiselect
-                v-model="video.category"
-                :options="$store.getters.getCategoriesList()"
-                :searchable="true"
-                :close-on-select="true"
-                :show-labels="true"
-                track-by="_id"
-                label="title"
-                placeholder="Select Category">
-              </multiselect>
-            </div>
-            <div class="form-group">
               <label for="tags">Tags</label>
               <multiselect
                 v-model="video.tags"
