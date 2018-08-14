@@ -1,7 +1,7 @@
 <template lang="html">
 
   <div class="video-item">
-    <div class="video-box d-flex flex-column border rounded shadow-sm p-1 mb-4">
+    <div class="video-box d-flex flex-column border rounded shadow-sm p-1">
       <div class="embed-responsive rounded embed-responsive-16by9">
         <iframe
           class="embed-responsive-item"
@@ -104,6 +104,8 @@ export default {
 @import "../assets/scss/_variables";
 @import "../assets/scss/_mixins";
 .video-item {
+  background-color: lighten($primary, 64%);
+  margin-bottom: 2rem;
   width: 100%;
   .video-title {
     padding: .25rem 0;
