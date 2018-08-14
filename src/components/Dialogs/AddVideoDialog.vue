@@ -32,7 +32,7 @@
           </form>
         </div>
         <div class="modal-footer">
-            <button @click.prevent="addVideo()" type="button" class="btn btn-danger btn-sm">Add</button>
+            <button @click.prevent="addVideo()" type="button" class="btn btn-primary btn-sm">Add</button>
             <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
         </div>
       </div>

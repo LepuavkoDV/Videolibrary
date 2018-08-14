@@ -29,7 +29,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button @click.prevent="assignTags()" type="button" class="btn btn-danger btn-sm">Save</button>
+          <button @click.prevent="assignTags()" type="button" class="btn btn-primary btn-sm">Save</button>
           <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
         </div>
       </div>

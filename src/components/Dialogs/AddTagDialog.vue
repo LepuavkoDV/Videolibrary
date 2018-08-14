@@ -18,7 +18,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button @click.prevent="addNewTag()" type="button" class="btn btn-sm btn-danger">Add</button>
+          <button @click.prevent="addNewTag()" type="button" class="btn btn-sm btn-primary">Add</button>
           <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
         </div>
       </div>
