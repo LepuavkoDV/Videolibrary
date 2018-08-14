@@ -4,9 +4,9 @@ html {
 
 body {
   font-weight: 200;
-  background-color: lighten($danger, 43%);
+  background-color: lighten($primary, 40%);
   .container-fluid {
-    background-color: lighten($danger, 46%);
+    background-color: lighten($primary, 65%);
     min-height: 90vh;
   }
 }

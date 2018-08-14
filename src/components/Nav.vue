@@ -5,7 +5,7 @@
       <li class="nav-item">
         <a
           @click.prevent="showAddVideoDialog()"
-          class="nav-link btn btn-sm btn-outline-danger"
+          class="nav-link btn btn-sm btn-outline-primary"
           href="#"
           data-toggle="tooltip"
           data-placement="top"
@@ -15,7 +15,7 @@
       </li>
       <li class="nav-item" v-for="(link, index) in links" :key="index">
         <router-link
-          :class="['nav-link btn btn-sm btn-outline-danger', { 'active': currentRoute === link.to}]"
+          :class="['nav-link btn btn-sm btn-outline-primary', { 'active': currentRoute === link.to}]"
           :to="link.to"
           data-toggle="tooltip"
           data-placement="top"
@@ -29,7 +29,7 @@
           data-toggle="tooltip"
           data-placement="top"
           title="Add new tag"
-          class="nav-link btn btn-sm btn-outline-danger">
+          class="nav-link btn btn-sm btn-outline-primary">
           <font-awesome-icon icon="cog"/>
         </button>
       </li>
@@ -40,7 +40,7 @@
           data-placement="top"
           title="Github repository"
           href="https://github.com/LepuavkoDV/Videolibrary"
-          class="nav-link btn btn-sm btn-outline-danger">
+          class="nav-link btn btn-sm btn-outline-primary">
           <font-awesome-icon :icon="['fab', 'github']" />
         </a>
       </li>
@@ -96,7 +96,7 @@ export default {
 @import "../assets/scss/_variables.scss";
 .nav {
   .nav-link {
-    color: $danger;
+    color: $primary;
     padding: .25rem .5rem;
     margin-left: .5rem;
     &.active, &:hover {

@@ -44,9 +44,9 @@ export default {
     font-weight: 800;
     word-spacing: -.1em;
     a {
-      color: $gray-500;
+      color: $primary;
       &:hover {
-        color: $gray-600;
+        color: lighten($primary, 25%);
         text-decoration: none;
       }
     }
@@ -54,6 +54,7 @@ export default {
       font-size: .75rem;
       font-family: $font-family-roboto;
       font-weight: 500;
+      color: lighten($primary, 20%);
     }
   }
 }

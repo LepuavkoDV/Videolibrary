@@ -35,8 +35,8 @@ export default {
   a {
     h1 {
       font-family: $font-family-lobster;
-      color: $danger;
-      border-bottom: 1px solid $danger;
+      color: darken($primary, 10%);
+      border-bottom: 1px solid darken($primary, 10%);
     }
     &:hover {
       text-decoration: none;

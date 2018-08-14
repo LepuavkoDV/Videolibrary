@@ -18,7 +18,7 @@
         <div class="video-title d-flex justify-content-between">
           <h5 class="video-title__title">{{videoName}}</h5>
           <div>
-            <span class="badge badge-danger">{{duration}}</span>
+            <span class="badge badge-primary">{{duration}}</span>
           </div>
         </div>
         <div class="video-tags d-flex justify-content-center flex-wrap">
@@ -108,7 +108,7 @@ export default {
   .video-title {
     padding: .25rem 0;
     .video-title__title {
-      font-family: $font-family-lobster;
+      font-family: $font-family-roboto;
       margin-bottom: 0;
     }
     .badge {
@@ -125,13 +125,13 @@ export default {
     .video-tags {
       .tag {
         font-family: $font-family-jura;
-        color: $danger;
-        font-size: .8rem;
-        font-weight: 400;
+        color: $primary;
+        font-size: 1rem;
+        font-weight: 600;
         margin-left: .25em;
         &:hover {
           text-decoration: none;
-          color: $gray-700;
+          color: lighten($primary, 20%);
         }
       }
     }
@@ -147,18 +147,18 @@ export default {
 @keyframes shadowAppear {
   0% {
     transform: rotate(xx);
-    box-shadow: 0 0 0 $danger;
+    box-shadow: 0 0 0 $primary;
   }
   100% {
     transform: rotate(xx);
-    box-shadow: 0 0 .5rem $danger;
+    box-shadow: 0 0 .5rem $primary;
   }
 }
 
 @keyframes shadowBlink {
   0% {
     transform: rotate(xx);
-    box-shadow: 0 0 .5rem $danger;
+    box-shadow: 0 0 .5rem $primary;
   }
   50% {
     transform: rotate(xx);
@@ -166,7 +166,7 @@ export default {
   }
   100% {
     transform: rotate(xx);
-    box-shadow: 0 0 .5rem $danger;
+    box-shadow: 0 0 .5rem $primary;
   }
 }
 </style>

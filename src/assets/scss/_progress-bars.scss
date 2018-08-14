@@ -1,5 +1,5 @@
-$progressbar-bar-background: $danger;
-$progressbar-background: $gray-200;
+$progressbar-bar-background: $primary;
+$progressbar-background: lighten($primary, 45%);
 @import "./node_modules/vue-progressbar-component/src/scss/progressbar";
 .progressbar {
   @extend .progressbar;
