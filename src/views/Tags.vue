@@ -23,6 +23,7 @@
 </template>
 
 <script lang="js">
+import $ from 'jquery'
 import _ from 'lodash'
 export default {
   name: 'src-views-items',
