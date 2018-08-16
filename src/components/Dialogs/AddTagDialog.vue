@@ -13,7 +13,14 @@
           <form>
             <div class="form-group">
               <label for="title">Title</label>
-              <input v-model="Tag.title" type="text" class="form-control" placeholder="Enter title">
+              <input
+                v-model="Tag.title"
+                type="text"
+                :class="['form-control', getValidationClass('title')]"
+                placeholder="Enter title">
+              <span class="validation-error-message" v-if="!$v.Tag.title.required && $v.Tag.$dirty">
+                This field is required
+              </span>
             </div>
           </form>
         </div>
@@ -30,6 +37,9 @@
 <script lang="js">
 import $ from 'jquery'
 import Multiselect from 'vue-multiselect'
+import { validationMixin } from 'vuelidate'
+import { required } from 'vuelidate/lib/validators'
+import Validation from '../../modules/utils/validation'
 export default {
   name: 'src-components-add-Tag-dialog',
   props: [],
@@ -42,8 +52,7 @@ export default {
   data () {
     return {
       Tag: {
-        title: null,
-        type: 'Category'
+        title: null
       },
       TagDefaultValues: null
     }
@@ -51,30 +60,45 @@ export default {
   methods: {
     resetForm () {
       this.Tag = { ...this.TagDefaultValues }
+      this.$v.$reset()
     },
     addNewTag () {
-      this.$store.dispatch('addTag', this.Tag).then(res => {
-        this.resetForm()
-        this.$notify({
-          group: 'main',
-          title: 'Success',
-          type: 'success',
-          text: 'New Tag added'
+      this.$v.$touch()
+      if (!this.$v.$invalid) {
+        this.$store.dispatch('addTag', this.Tag).then(res => {
+          $('#addTagDialog').modal('hide')
+          this.resetForm()
+          this.$notify({
+            group: 'main',
+            title: 'Success',
+            type: 'success',
+            text: 'New Tag added'
+          })
+        }).catch(err => {
+          this.$notify({
+            group: 'main',
+            title: 'Error',
+            type: 'error',
+            text: err.response.data.message
+          })
         })
-      }).catch(err => {
-        this.$notify({
-          group: 'main',
-          title: 'Error',
-          type: 'error',
-          text: err.response.data.message
-        })
-      })
+      }
+    },
+    getValidationClass (fieldname) {
+      return Validation.getValidationClass(this.$v.Tag, fieldname)
     }
   },
   computed: {},
   components: {
     Multiselect
+  },
+  mixins: [validationMixin],
+  validations: {
+    Tag: {
+      title: { required }
+    }
   }
+
 }
 </script>
 

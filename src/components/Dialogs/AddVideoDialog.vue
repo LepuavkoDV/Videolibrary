@@ -13,7 +13,15 @@
           <form>
             <div class="form-group">
               <label for="link">Youtube Link</label>
-              <input v-model="video.link" type="email" class="form-control" id="link" aria-describedby="emailHelp" placeholder="Enter Youtube video url">
+              <input
+                v-model="video.link"
+                type="text"
+                :class="['form-control', getValidationClass('link')]"
+                id="link"
+                placeholder="Enter Youtube video url">
+              <span class="validation-error-message" v-if="!$v.video.link.required && $v.video.$dirty">
+                This field is required
+              </span>
             </div>
             <div class="form-group">
               <label for="tags">Tags</label>
@@ -44,6 +52,9 @@
 <script lang="js">
 import $ from 'jquery'
 import Multiselect from 'vue-multiselect'
+import { validationMixin } from 'vuelidate'
+import { required } from 'vuelidate/lib/validators'
+import Validation from '../../modules/utils/validation'
 export default {
   name: 'src-components-add-video-dialog',
   props: [],
@@ -57,7 +68,6 @@ export default {
     return {
       video: {
         link: null,
-        category: null,
         tags: []
       },
       videoDefaultValues: null
@@ -65,30 +75,43 @@ export default {
   },
   methods: {
     addVideo () {
-      this.$store.dispatch('addVideo', this.video).then(res => {
-        $('#addVideoDialog').modal('hide')
-        this.$notify({
-          group: 'main',
-          title: 'Success',
-          type: 'success',
-          text: 'New video added to library'
+      this.$v.$touch()
+      if (!this.$v.$invalid) {
+        this.$store.dispatch('addVideo', this.video).then(res => {
+          $('#addVideoDialog').modal('hide')
+          this.$notify({
+            group: 'main',
+            title: 'Success',
+            type: 'success',
+            text: 'New video added to library'
+          })
+        }).catch(err => {
+          this.$notify({
+            group: 'main',
+            title: 'Error',
+            type: 'error',
+            text: err.response.data.message
+          })
         })
-      }).catch(err => {
-        this.$notify({
-          group: 'main',
-          title: 'Error',
-          type: 'error',
-          text: err.response.data.message
-        })
-      })
+      }
     },
     resetForm () {
       this.video = { ...this.videoDefaultValues }
+      this.$v.$reset()
+    },
+    getValidationClass (fieldname) {
+      return Validation.getValidationClass(this.$v.video, fieldname)
     }
   },
   computed: {},
   components: {
     Multiselect
+  },
+  mixins: [validationMixin],
+  validations: {
+    video: {
+      link: { required }
+    }
   }
 }
 </script>
