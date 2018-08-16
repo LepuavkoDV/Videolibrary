@@ -3,7 +3,7 @@
     <notifications group="main" />
     <Nav></Nav>
     <section class="heading">
-      <router-link to="/"><h1 class="mb-4 pb-2 text-center">Videolibrary</h1></router-link>
+      <h1 class="mb-4 pb-2 text-center">Videolibrary</h1>
     </section>
     <router-view/>
     <Dialogs></Dialogs>
@@ -32,15 +32,13 @@ export default {
 @import "./assets/scss/main.scss";
 
 .heading {
-  a {
-    h1 {
-      font-family: $font-family-lobster;
-      color: darken($primary, 10%);
-      border-bottom: 1px solid darken($primary, 10%);
-    }
-    &:hover {
-      text-decoration: none;
-    }
+  h1 {
+    font-family: $font-family-lobster;
+    color: darken($primary, 10%);
+    border-bottom: 1px solid darken($primary, 10%);
+  }
+  &:hover {
+    text-decoration: none;
   }
 }
 </style>

@@ -1,7 +1,7 @@
 <template lang="html">
 
-  <section class="src-views-items">
-    <div class="items-list d-flex flex-row flex-wrap justify-content-center align-items-start align-content-start px-5">
+  <section class="src-views-items d-flex flex-column align-items-center">
+    <div class="items-list d-flex flex-row flex-wrap justify-content-center align-items-start align-content-start px-5 mb-5">
       <div
         class="item d-flex flex-column align-items-center"
         v-for="(tag, index) in this.$store.state.tags.tags"
@@ -10,6 +10,14 @@
         <div class="item-videos">Videos: {{tag.videos.length}}</div>
       </div>
     </div>
+    <button
+      @click.prevent="showAddItemDialog()"
+      data-toggle="tooltip"
+      data-placement="top"
+      title="Add new tag"
+      class="btn btn-lg btn-outline-primary mb-5">
+      <font-awesome-icon icon="cog"/>
+    </button>
   </section>
 
 </template>
@@ -26,6 +34,9 @@ export default {
   methods: {
     makeLink (name) {
       return '/tags/' + _.kebabCase(name)
+    },
+    showAddItemDialog () {
+      $('#addTagDialog').modal('show')
     }
   },
   computed: {},

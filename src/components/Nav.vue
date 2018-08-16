@@ -23,27 +23,6 @@
           <font-awesome-icon :icon="link.icon" />
         </router-link>
       </li>
-      <li class="nav-item">
-        <button
-          @click.prevent="showAddItemDialog()"
-          data-toggle="tooltip"
-          data-placement="top"
-          title="Add new tag"
-          class="nav-link btn btn-sm btn-outline-primary">
-          <font-awesome-icon icon="cog"/>
-        </button>
-      </li>
-      <li class="nav-item">
-        <a
-          target="_blank"
-          data-toggle="tooltip"
-          data-placement="top"
-          title="Github repository"
-          href="https://github.com/LepuavkoDV/Videolibrary"
-          class="nav-link btn btn-sm btn-outline-primary">
-          <font-awesome-icon :icon="['fab', 'github']" />
-        </a>
-      </li>
     </ul>
   </section>
 
@@ -75,9 +54,6 @@ export default {
   methods: {
     showAddVideoDialog () {
       $('#addVideoDialog').modal('show')
-    },
-    showAddItemDialog () {
-      $('#addTagDialog').modal('show')
     }
   },
   computed: {},
