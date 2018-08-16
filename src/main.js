@@ -7,7 +7,7 @@ import store from './modules/store'
 import 'bootstrap'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faPlus, faTags, faHome, faCog, faWrench } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faTags, faHome, faCog, faWrench, faSadTear } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 library.add(faPlus)
@@ -16,6 +16,7 @@ library.add(faHome)
 library.add(faCog)
 library.add(faGithub)
 library.add(faWrench)
+library.add(faSadTear)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 import Notifications from 'vue-notification'

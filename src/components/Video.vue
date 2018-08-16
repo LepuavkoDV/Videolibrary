@@ -1,7 +1,11 @@
 <template lang="html">
 
   <div class="video-item">
-    <div class="video-box d-flex flex-column border rounded shadow-sm p-1">
+    <div
+      class="video-box d-flex flex-column border rounded shadow-sm p-1"
+      data-toggle="tooltip"
+      data-placement="top"
+      :title="_props.video.title">
       <div class="embed-responsive rounded embed-responsive-16by9">
         <iframe
           class="embed-responsive-item"
@@ -15,7 +19,7 @@
         ></iframe>
       </div>
       <div class="video-item__info my-3 mx-1">
-        <div class="video-title d-flex justify-content-between">
+        <div class="video-title d-flex flex-row justify-content-between align-items-center">
           <h5 class="video-title__title">{{videoName}}</h5>
           <div>
             <span class="badge badge-primary">{{duration}}</span>
@@ -80,7 +84,7 @@ export default {
   computed: {
     videoName () {
       return _.truncate(this._props.video.title, {
-        'length': 30,
+        'length': 35,
         'omission': '...'
       })
     },
@@ -104,13 +108,13 @@ export default {
 @import "../assets/scss/_variables";
 @import "../assets/scss/_mixins";
 .video-item {
-  background-color: lighten($primary, 64%);
   margin-bottom: 2rem;
   width: 100%;
   .video-title {
     padding: .25rem 0;
     .video-title__title {
       font-family: $font-family-roboto;
+      font-size: .9em;
       margin-bottom: 0;
     }
     .badge {

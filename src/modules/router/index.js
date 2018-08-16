@@ -3,14 +3,15 @@ import Router from 'vue-router'
 import Home from '../../views/Home'
 import Tags from '../../views/Tags'
 import Tag from '../../views/Tag'
+import p404 from '../../views/p404'
 
 Vue.use(Router)
 
 const routes = [
   { path: '/', name: '/', component: Home },
   { path: '/tags', name: 'tags', component: Tags },
-  { path: '/tags/:tagName', name: 'tag-listing', component: Tag }
-  // { path: '/*', name: '404', component: p404 }
+  { path: '/tags/:tagName', name: 'tag-listing', component: Tag },
+  { path: '/*', name: '404', component: p404 }
 ]
 
 export default new Router({
