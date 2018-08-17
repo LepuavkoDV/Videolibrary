@@ -13,6 +13,7 @@
 <script lang="js">
 import Nav from './components/Nav'
 import Dialogs from './components/Dialogs/Index'
+import $ from 'jquery'
 export default {
   beforeMount () {
     this.$store.dispatch('loadVideos')
@@ -24,6 +25,11 @@ export default {
   components: {
     Nav,
     Dialogs
+  },
+  watch: {
+    '$route' (to, from) {
+      $('[data-toggle="tooltip"]').tooltip('hide')
+    }
   }
 }
 </script>
