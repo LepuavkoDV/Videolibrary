@@ -4,7 +4,7 @@ html {
 
 body {
   font-weight: 200;
-  background-color: lighten($primary, 40%);
+  background-color: $gray-200;
   background-image: url("/static/stardust.png");
   .container-fluid {
     background-color: lighten($primary, 65%);
