@@ -45,7 +45,7 @@
     "mongoose": "^5.10.1",
     "mongoose-relationship": "^0.1.5",
     "morgan": "^1.10.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "nodemailer": "^4.7.0",
     "nodemon": "^1.19.4",
     "normalize.css": "^8.0.1",
